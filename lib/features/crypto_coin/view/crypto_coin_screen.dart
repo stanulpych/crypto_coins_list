@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:crypto_coins_list/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCoinScreen extends StatefulWidget {
@@ -10,12 +10,12 @@ class CryptoCoinScreen extends StatefulWidget {
 
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
 
-  String? coinName;
+  CryptoCoin? coin;
 
   @override
   void didChangeDependencies() {
     final args = ModalRoute.of(context)?.settings.arguments;
-    assert(args != null && args is String, 'You must provide String args');
+    assert(args != null && args is CryptoCoin, 'You must provide CryptoCoin args');
     // if(args == null){
     //   log('You must provide args');
     //   return;
@@ -24,7 +24,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     //   log('You must provide String args');
     //   return;
     // }
-    coinName = args as String;
+    coin = args as CryptoCoin;
     setState(() {});
     super.didChangeDependencies();
   }
@@ -32,7 +32,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text(coinName ?? '...')),
+      appBar: AppBar(title: Text(coin?.name ?? '...')),
     );
   }
 }
