@@ -2,10 +2,8 @@ import 'package:crypto_coins_list/features/crypto_coin/bloc/crypto_coin_details_
 import 'package:crypto_coins_list/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:crypto_coins_list/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-
 import '../widgets/widgets.dart';
 
 class CryptoCoinScreen extends StatefulWidget {
@@ -110,7 +108,7 @@ class _DataRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(width: 140, child: Text(title)),
+        SizedBox(width: 130, child: Text(title)),
         const SizedBox(width: 32),
         Flexible(
           child: Text(value),
