@@ -18,12 +18,12 @@ Future<void> main() async {
   GetIt.I.registerSingleton(talker);
   GetIt.I<Talker>().debug('Talker started...');
 
-  // WidgetsFlutterBinding.ensureInitialized();
-  // final app = await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  //
-  // talker.info(app.options.projectId);
+  WidgetsFlutterBinding.ensureInitialized();
+  final app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  talker.info(app.options.projectId);
 
   final dio = Dio();
   dio.interceptors.add(

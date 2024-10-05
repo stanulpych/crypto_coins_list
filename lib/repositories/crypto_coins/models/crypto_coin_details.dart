@@ -1,12 +1,13 @@
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'crypto_coin_details.g.dart';
 
-import 'package:crypto_coins_list/repositories/crypto_coins/models/models.dart';
-
-class CryptoCoinDetail extends CryptoCoin {
+@JsonSerializable()
+class CryptoCoinDetail extends Equatable{
   const CryptoCoinDetail({
-    required super.name,
-    required super.priceInUSD,
-    required super.imageUrl,
+    required this.priceInUSD,
+    required this.imageUrl,
     required this.toSymbol,
     required this.lastUpdate,
     required this.hight24Hour,
@@ -14,21 +15,46 @@ class CryptoCoinDetail extends CryptoCoin {
 
   });
 
+  @JsonKey(name: 'TOSYMBOL')
   final String toSymbol;
 
-  final String lastUpdate;
+  @JsonKey(
+      name: 'LASTUPDATE',
+      toJson: _dateTimeToJson,
+      fromJson: _fromJson
+  )
+  final DateTime lastUpdate;
 
+  @JsonKey(name: 'HIGH24HOUR')
   final double hight24Hour;
 
+  @JsonKey(name: 'LOW24HOUR')
   final double low24Hours;
 
+  @JsonKey(name: 'PRICE')
+  final double priceInUSD;
+
+  @JsonKey(name: 'IMAGEURL')
+  final String imageUrl;
+
+  String get fullImageUrl => 'https://www.cryptocompare.com/$imageUrl';
+
+  factory CryptoCoinDetail.fromJson(Map<String, dynamic> json) =>
+      _$CryptoCoinDetailFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CryptoCoinDetailToJson(this);
+
+  static int _dateTimeToJson(DateTime time) => time.microsecondsSinceEpoch;
+
+  static DateTime _fromJson(int milliseconds) => DateTime.fromMillisecondsSinceEpoch(milliseconds);
 
   @override
-  List<Object?> get props => super.props
-      ..addAll([
-        toSymbol,
-        lastUpdate,
-        hight24Hour,
-        low24Hours
-      ]);
+  List<Object?> get props => [
+    toSymbol,
+    lastUpdate,
+    hight24Hour,
+    low24Hours,
+    priceInUSD,
+    imageUrl
+  ];
 }
