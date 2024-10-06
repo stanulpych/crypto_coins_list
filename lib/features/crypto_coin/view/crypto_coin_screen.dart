@@ -112,7 +112,10 @@ class _DataRow extends StatelessWidget {
         SizedBox(width: 130, child: Text(title)),
         const SizedBox(width: 32),
         Flexible(
-          child: Text(value),
+          child: Text(
+            value,
+            style: const TextStyle(fontSize: 18)
+          ),
         ),
       ],
     );

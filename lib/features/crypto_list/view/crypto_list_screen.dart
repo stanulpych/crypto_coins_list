@@ -38,7 +38,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                 Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => TalkerScreen(
-                          talker: GetIt.I<Talker>(),)
+                          talker: GetIt.I<Talker>())
                     )
                 );
               },
