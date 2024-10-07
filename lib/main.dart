@@ -62,7 +62,7 @@ void main() async {
   FlutterError.onError =
       (details) => GetIt.I<Talker>().handle(details.exception, details.stack);
   runZonedGuarded(
-          () => runApp(const CryptoCurrenciesListApp()),
+          () => runApp(CryptoCurrenciesListApp()),
           (error, stack) => GetIt.I<Talker>().handle(error, stack),
   );
 
